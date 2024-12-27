@@ -1,0 +1,26 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Search Box</title>
+        <!-- Use Django's static template tag to load CSS -->
+        <link rel="stylesheet" href="{% static 'css/front.css' %}" />
+    </head>
+    <body>
+        <div class="search-container">
+            <input
+                type="text"
+                id="search-box"
+                class="search-box"
+                placeholder="Search for something..."
+                oninput="showSuggestions(this.value)"
+            />
+            <ul id="suggestions-list" class="suggestions-list"></ul>
+        </div>
+        <!-- Use Django's static template tag to load JavaScript -->
+        <script src="{% static 'js/front.js' %}"></script>
+    </body>
+</html>
