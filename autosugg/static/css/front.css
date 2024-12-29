@@ -1,56 +1,108 @@
-/* styles.css */
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+/* General Reset */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: "Arial", sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    height: 100vh;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
 }
 
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.header-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #222;
+}
+
+/* Search Container */
 .search-container {
-    position: relative;
-    width: 400px;
-}
-
-.search-box {
     width: 100%;
-    padding: 12px 20px;
-    border: 1px solid #ddd;
-    border-radius: 25px;
-    font-size: 16px;
-    transition: box-shadow 0.3s ease-in-out;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
 }
 
-.search-box:focus {
-    outline: none;
-    box-shadow: 0 0 8px rgba(0, 0, 255, 0.2);
-}
-
-.suggestions-list {
-    list-style: none;
-    margin: 5px 0 0 0;
-    padding: 0;
+.search-box-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: 1px solid #ddd;
     border-radius: 5px;
     background-color: #fff;
-    max-height: 150px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.search-box {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.search-box::placeholder {
+    color: #aaa;
+}
+
+.search-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 10px;
+}
+
+.search-button:hover {
+    background-color: #0056b3;
+}
+
+/* Suggestions List */
+.suggestions-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-height: 200px;
     overflow-y: auto;
-    display: none;
-    position: absolute;
-    width: 100%;
-    z-index: 10;
 }
 
 .suggestions-list li {
-    padding: 10px 15px;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.3s ease;
+}
+
+.suggestions-list li:last-child {
+    border-bottom: none;
 }
 
 .suggestions-list li:hover {
-    background-color: #f0f0f0;
+    background-color: #f0f0f5;
 }

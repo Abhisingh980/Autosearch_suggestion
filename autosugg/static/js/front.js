@@ -1,45 +1,32 @@
-// script.js
-
-const suggestions = [
-  "JavaScript",
-  "HTML",
-  "CSS",
-  "Python",
-  "Java",
-  "Django",
-  "React",
-  "Vue.js",
-  "Node.js",
-  "Elasticsearch",
-];
-
-function showSuggestions(input) {
+function showSuggestions(query) {
   const suggestionsList = document.getElementById("suggestions-list");
-  suggestionsList.innerHTML = ""; // Clear existing suggestions
+  suggestionsList.innerHTML = "";
 
-  if (!input) {
-    suggestionsList.style.display = "none";
-    return;
-  }
+  if (query.trim() === "") return;
 
-  const filteredSuggestions = suggestions.filter((suggestion) =>
-    suggestion.toLowerCase().startsWith(input.toLowerCase()),
+  const suggestions = [
+    "JavaScript",
+    "HTML",
+    "CSS",
+    "Python",
+    "Django",
+    "React",
+    "Vue.js",
+    "Node.js",
+    "Elasticsearch",
+  ];
+
+  const filteredSuggestions = suggestions.filter((item) =>
+    item.toLowerCase().includes(query.toLowerCase()),
   );
 
-  if (filteredSuggestions.length > 0) {
-    suggestionsList.style.display = "block";
-    filteredSuggestions.forEach((suggestion) => {
-      const li = document.createElement("li");
-      li.textContent = suggestion;
-      li.addEventListener("click", () => selectSuggestion(suggestion));
-      suggestionsList.appendChild(li);
-    });
-  } else {
-    suggestionsList.style.display = "none";
-  }
-}
-
-function selectSuggestion(value) {
-  document.getElementById("search-box").value = value;
-  document.getElementById("suggestions-list").style.display = "none";
+  filteredSuggestions.forEach((suggestion) => {
+    const li = document.createElement("li");
+    li.textContent = suggestion;
+    li.onclick = () => {
+      document.getElementById("search-box").value = suggestion;
+      suggestionsList.innerHTML = "";
+    };
+    suggestionsList.appendChild(li);
+  });
 }

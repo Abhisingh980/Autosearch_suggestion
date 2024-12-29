@@ -6,21 +6,29 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Search Box</title>
-        <!-- Use Django's static template tag to load CSS -->
+        <!-- Link to the CSS file -->
         <link rel="stylesheet" href="{% static 'css/front.css' %}" />
     </head>
     <body>
-        <div class="search-container">
-            <input
-                type="text"
-                id="search-box"
-                class="search-box"
-                placeholder="Search for something..."
-                oninput="showSuggestions(this.value)"
-            />
-            <ul id="suggestions-list" class="suggestions-list"></ul>
-        </div>
-        <!-- Use Django's static template tag to load JavaScript -->
+        <header class="header">
+            <h1 class="header-title">Search Box</h1>
+        </header>
+        <main>
+            <div class="search-container">
+                <div class="search-box-wrapper">
+                    <input
+                        type="text"
+                        id="search-box"
+                        class="search-box"
+                        placeholder="Search for something..."
+                        oninput="showSuggestions(this.value)"
+                    />
+                    <button class="search-button">Search</button>
+                </div>
+                <ul id="suggestions-list" class="suggestions-list"></ul>
+            </div>
+        </main>
+        <!-- Link to the JavaScript file -->
         <script src="{% static 'js/front.js' %}"></script>
     </body>
 </html>

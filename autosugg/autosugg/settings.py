@@ -38,10 +38,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+]
+
+EXTENTED_APPS = [
     'livereload',
     'search',
 
 ]
+
+INSTALLED_APPS += EXTENTED_APPS
 
 
 MIDDLEWARE = [
