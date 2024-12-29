@@ -52,8 +52,8 @@ body {
 
 .search-box {
     flex: 1;
-    border: none;
-    outline: none;
+    border: 5px;
+    outline: 5px;
     font-size: 1rem;
     padding: 10px;
     border-radius: 5px;
