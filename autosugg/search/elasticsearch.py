@@ -1,7 +1,8 @@
 from .elasticserchwraper import create_index, index_document
+from .models import BookSummary
 
 # Define index settings
-index_name = "products"
+index_name = "categories"
 settings = {
     "settings": {
         "number_of_shards": 1,
@@ -10,9 +11,8 @@ settings = {
     "mappings": {
         "properties": {
             "name": {"type": "text"},
-            "description": {"type": "text"},
-            "price": {"type": "float"},
-            "available": {"type": "boolean"},
+            "summeries": {"type": "text"},
+            "categories": {"type": "text"},
         }
     }
 }
@@ -20,10 +20,18 @@ settings = {
 # Create the index
 create_index(index_name, settings)
 
-# Index some data
-index_document(index_name, 1, {
-    "name": "Product A",
-    "description": "A high-quality product.",
-    "price": 99.99,
-    "available": True,
-})
+# Index the documents which are already in the database in model.py file
+
+
+def bookindex():
+    book_summaries = BookSummary.objects.all()
+    for book in book_summaries:
+        document = {
+            "name": book.name,
+            "summeries": book.summeries,
+            "categories": book.categories,
+        }
+        index_document(index_name, book.id, document)
+    print("All documents indexed successfully!")
+
+# Get all book summaries from the database and index them
